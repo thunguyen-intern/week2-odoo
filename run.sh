@@ -47,8 +47,6 @@ echo -e "\n--- Installing Python 3 + pip3 --"
 sudo apt-get python3 python3-pip python-dev python3-dev libxml2-dev libpq-dev liblcms2-dev libxslt1-dev zlib1g-dev libsasl2-dev libldap2-dev build-essential git libssl-dev libffi-dev libjpeg-dev libblas-dev libatlas-base-dev postgresql-devel
 sudo apt-get install --reinstall libpq-dev
 sudo apt-get install postgresql-server postgresql-contrib postgresql-libs
-echo -e "\n---- Install python packages/requirements ----"
-#sudo pip3 install -r https://github.com/odoo/odoo/raw/${ODOO_VERSION}/requirements.txt
 
 echo -e "\n---- Installing nodeJS NPM and rtlcss for LTR support ----"
 sudo apt-get install nodejs npm -y
@@ -68,19 +66,8 @@ su - postgres -c "createuser -s $ODOO_USER"
 su - postgres -c "createdb odoo"
 sudo -u postgres psql -c "ALTER USER odoo WITH SUPERUSER;"
 
-
 echo -e "\n---- Create ODOO system user ----"
-#sudo adduser --system --quiet --shell=/bin/bash --home=$ODOO_HOME --gecos 'ODOO' --group $ODOO_USER
-#The user should also be added to the sudo'ers group.
-#sudo adduser $ODOO_USER sudo
-#sudo -i
-#sudo su - postgres -c "createuser -s odoo"
-#sudo su - postgres -c "createdb odoo"
-#sudo -u postgres psql -c "ALTER USER odoo WITH SUPERUSER;"
 useradd -m -d /opt/odoo -U -r -s /bin/bash odoo
-#echo -e "\n---- Create Log directory ----"
-#sudo mkdir /var/log/$ODOO_USER
-#sudo chown $ODOO_USER:$ODOO_USER /var/log/$ODOO_USER
 
 #--------------------------------------------------
 # Install ODOO
